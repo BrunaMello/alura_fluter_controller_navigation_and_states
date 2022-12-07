@@ -1,4 +1,4 @@
-# alura_fluter_controller_navigation_and_states
+# alura_flutter_controller_navigation_and_states
 
 A new Flutter project.
 
