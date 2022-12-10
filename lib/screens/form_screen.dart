@@ -17,6 +17,22 @@ class _FormScreenState extends State<FormScreen>
 
   final _formKey = GlobalKey<FormState>();
 
+  bool valueValidator(String? value) {
+    if (value != null && value.isEmpty) {
+      return true;
+    }
+    return false;
+  }
+
+  bool difficultyValidator(String? value) {
+    if (value != null && value.isEmpty) {
+      if (int.parse(value) > 5 || int.parse(value) < 1) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -98,8 +114,11 @@ class _FormScreenState extends State<FormScreen>
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
+                      onChanged: (text){
+                        setState(() {});
+                      },
                       validator: (value) {
-                        if (value!.isEmpty) {
+                        if (valueValidator(value)) {
                           return 'Insert one Image URL';
                         }
                         return null;
@@ -146,6 +165,7 @@ class _FormScreenState extends State<FormScreen>
                               content: Text('Saving new task'),
                             ),
                           );
+                          Navigator.pop(context);
                         }
                       },
                       child: const Text('Add!')),

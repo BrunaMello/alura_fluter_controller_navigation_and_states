@@ -1,3 +1,4 @@
+import 'package:alura_fluter_controller_navigation_and_states/screens/form_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../components/task.dart';
@@ -10,34 +11,26 @@ class InitialScreen extends StatefulWidget {
 }
 
 class _InitialScreenState extends State<InitialScreen> {
-
-  bool opacity = true;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(leading: Container(), title: const Text("Tasks")),
-      body: AnimatedOpacity(
-        opacity: opacity ? 1 : 0,
-        duration: const Duration(milliseconds: 1000),
-        child: ListView(
-          children: const [
-            Task('Learning Flutter', 'assets/images/flutter.png', 3),
-            Task('Ride Bike', 'assets/images/bike.webp', 1),
-            Task('Learning English', 'assets/images/book.jpeg', 2),
-            Task('Meditation', 'assets/images/meditation.jpeg', 5),
-            SizedBox(height: 80),
-          ],
-        ),
+      body: ListView(
+        children: const [
+          Task('Learning Flutter', 'assets/images/flutter.png', 3),
+          Task('Ride Bike', 'assets/images/bike.webp', 1),
+          Task('Learning English', 'assets/images/book.jpeg', 2),
+          Task('Meditation', 'assets/images/meditation.jpeg', 5),
+          SizedBox(height: 80),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () { setState(() {
-          opacity =! opacity;
-        });
-          },
-        child: const Icon(Icons.remove_red_eye),
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => FormScreen()));
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
 }
-
