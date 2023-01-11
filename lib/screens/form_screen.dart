@@ -75,7 +75,7 @@ class _FormScreenState extends State<FormScreen>
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       validator: (String? value) {
-                        if (value != null && value.isEmpty) {
+                        if (valueValidator(value)) {
                           return 'Insert Task Name';
                         }
                         return null;
@@ -97,9 +97,7 @@ class _FormScreenState extends State<FormScreen>
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       validator: (value) {
-                        if (value!.isEmpty ||
-                            int.parse(value) > 5 ||
-                            int.parse(value) < 1) {
+                        if (difficultyValidator(value)) {
                           return 'Insert Difficult Level Between 1 and 5';
                         }
                         return null;
